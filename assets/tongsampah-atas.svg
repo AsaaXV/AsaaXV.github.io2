@@ -1,0 +1,34 @@
+<svg viewBox="0 0 500 250" width="1000" height="500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="roughPaper4" x="-10%" y="-10%" width="120%" height="120%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="3" result="noise" />
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="3" xChannelSelector="R" yChannelSelector="G" />
+    </filter>
+    <linearGradient id="lidMetalGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stopColor="#7E858B" />
+      <stop offset="35%" stopColor="#CED4D9" />
+      <stop offset="60%" stopColor="#9FA7AD" />
+      <stop offset="100%" stopColor="#555C62" />
+    </linearGradient>
+  </defs>
+
+  <g filter="url(#roughPaper4)" transform="translate(0, 20)">
+    <!-- Handle on top -->
+    <path d="M 180 85 L 180 50 Q 180 32 205 32 L 295 32 Q 320 32 320 50 L 320 85"
+          stroke="#3B4146" stroke-width="18" stroke-linecap="round" fill="none" />
+    <path d="M 180 85 L 180 50 Q 180 32 205 32 L 295 32 Q 320 32 320 50 L 320 85"
+          stroke="#C8CFD4" stroke-width="10" stroke-linecap="round" fill="none" />
+
+    <!-- Convex Dome -->
+    <path d="M 50 160 C 65 95, 180 75, 250 75 C 320 75, 435 95, 450 160 Z"
+          fill="url(#lidMetalGrad)" stroke="#32373C" stroke-width="10" stroke-linejoin="round" />
+
+    <!-- Dome Highlight curve -->
+    <path d="M 100 120 Q 250 90 400 120" stroke="#FFFFFF" stroke-width="7" stroke-linecap="round" stroke-opacity="0.8" fill="none" />
+
+    <!-- Bottom Flanged Rim with downward lip -->
+    <path d="M 35 160 L 465 160 C 475 160, 480 172, 470 182 C 420 195, 80 195, 30 182 C 20 172, 25 160, 35 160 Z"
+          fill="#868E94" stroke="#32373C" stroke-width="9" stroke-linejoin="round" />
+    <line x1="50" y1="168" x2="450" y2="168" stroke="#D3D9DE" stroke-width="5" stroke-linecap="round" stroke-opacity="0.75" />
+  </g>
+</svg>

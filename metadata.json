@@ -1,0 +1,6 @@
+{
+  "name": "3R: Reduce, Reuse, Recycle - Microsite Interaktif Craft4Earth",
+  "description": "Microsite edukasi interaktif 3R (Reduce, Reuse, Recycle) karya kelompok Craft4Earth DKV Universitas Negeri Makassar. Belajar 3R sekali scroll dengan flip card, komparasi visual, roda siklus daur ulang, dan aksi kampus.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

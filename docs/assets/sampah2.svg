@@ -1,0 +1,22 @@
+<svg viewBox="0 0 500 350" width="1000" height="700" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="roughPaperS2" x="-10%" y="-10%" width="120%" height="120%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="3" result="noise" />
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="3" xChannelSelector="R" yChannelSelector="G" />
+    </filter>
+  </defs>
+  <g filter="url(#roughPaperS2)">
+    <!-- White/silver foil left -->
+    <path d="M 100 220 Q 90 140, 160 145 Q 200 160, 185 220 Q 170 270, 115 255 Z"
+          fill="#CAD0D1" stroke="#687173" stroke-width="7" stroke-linejoin="round" />
+    <!-- Magenta crumpled wrapper center -->
+    <path d="M 160 180 Q 150 95, 230 110 Q 290 125, 270 200 Q 250 265, 190 240 Z"
+          fill="#9C4475" stroke="#561E3E" stroke-width="7" stroke-linejoin="round" />
+    <!-- Golden yellow paper right -->
+    <path d="M 230 180 Q 240 120, 310 135 Q 360 160, 345 225 Q 320 275, 250 255 Z"
+          fill="#C49B36" stroke="#6E5319" stroke-width="7" stroke-linejoin="round" />
+    <!-- Muted maroon top -->
+    <path d="M 205 130 Q 215 70, 275 80 Q 300 115, 260 145 Z"
+          fill="#87352D" stroke="#4C1A14" stroke-width="6" stroke-linejoin="round" />
+  </g>
+</svg>

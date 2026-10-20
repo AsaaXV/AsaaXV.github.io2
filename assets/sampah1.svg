@@ -1,0 +1,22 @@
+<svg viewBox="0 0 500 350" width="1000" height="700" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="roughPaperS1" x="-10%" y="-10%" width="120%" height="120%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="3" result="noise" />
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="3" xChannelSelector="R" yChannelSelector="G" />
+    </filter>
+  </defs>
+  <g filter="url(#roughPaperS1)">
+    <!-- Yellow crumpled paper left -->
+    <path d="M 80 230 Q 60 180, 120 160 Q 170 150, 180 210 Q 185 270, 125 285 Q 70 285, 80 230 Z"
+          fill="#CCA23D" stroke="#7A5D1D" stroke-width="7" stroke-linejoin="round" />
+    <!-- Dark red/brick crumpled box center -->
+    <path d="M 165 175 Q 145 95, 230 85 Q 310 80, 300 170 Q 310 240, 220 235 Q 160 245, 165 175 Z"
+          fill="#A43B2E" stroke="#5E1D15" stroke-width="7" stroke-linejoin="round" />
+    <!-- Green crumpled wrapper bottom -->
+    <path d="M 240 205 Q 230 140, 310 140 Q 380 150, 370 210 Q 365 275, 290 260 Q 235 260, 240 205 Z"
+          fill="#528343" stroke="#2B4D20" stroke-width="7" stroke-linejoin="round" />
+    <!-- White crumpled carton top right -->
+    <path d="M 280 120 Q 295 60, 355 65 Q 395 90, 370 140 Q 330 155, 285 140 Z"
+          fill="#E5EAE7" stroke="#798380" stroke-width="6" stroke-linejoin="round" />
+  </g>
+</svg>

@@ -1,0 +1,89 @@
+<svg viewBox="0 0 500 500" width="1000" height="1000" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="roughPaperWipes" x="-10%" y="-10%" width="120%" height="120%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="3" result="noise" />
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="3" xChannelSelector="R" yChannelSelector="G" />
+    </filter>
+    <linearGradient id="wipe1Grad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#BAE6FD" />
+      <stop offset="100%" stop-color="#38BDF8" />
+    </linearGradient>
+    <linearGradient id="wipe2Grad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FED7AA" />
+      <stop offset="100%" stop-color="#FB923C" />
+    </linearGradient>
+    <linearGradient id="wipe3Grad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#BBF7D0" />
+      <stop offset="100%" stop-color="#4ADE80" />
+    </linearGradient>
+  </defs>
+
+  <!-- Shadow on surface -->
+  <polygon points="110,430 390,430 450,460 70,460" fill="#283618" opacity="0.2" />
+
+  <g filter="url(#roughPaperWipes)">
+    <!-- STACK OF UP-CYCLED COTTON CLEANING WIPES / LAP SERBAGUNA -->
+
+    <!-- Wipe 3 (Bottom Layer: Soft Pastel Green with decorative stitching) -->
+    <g transform="translate(0, 40)">
+      <polygon points="120,300 380,290 410,380 90,390"
+               fill="url(#wipe3Grad)" stroke="#15803D" stroke-width="6" stroke-linejoin="round" />
+      <!-- Zigzag stitched border edge -->
+      <polygon points="125,305 375,295 405,375 95,385"
+               fill="none" stroke="#FEFAE0" stroke-width="3" stroke-dasharray="6 5" />
+    </g>
+
+    <!-- Wipe 2 (Middle Layer: Soft Pastel Orange/Peach) -->
+    <g transform="translate(10, 20) rotate(-4 250 300)">
+      <polygon points="125,270 385,260 415,350 95,360"
+               fill="url(#wipe2Grad)" stroke="#C2410C" stroke-width="6" stroke-linejoin="round" />
+      <!-- Zigzag stitched border edge -->
+      <polygon points="130,275 380,265 410,345 100,355"
+               fill="none" stroke="#7C2D12" stroke-width="3" stroke-dasharray="6 5" />
+    </g>
+
+    <!-- Wipe 1 (Top Layer: Upcycled from baby onesie with bear and star patterns) -->
+    <g transform="rotate(3 250 250)">
+      <polygon points="130,190 390,180 420,290 100,300"
+               fill="url(#wipe1Grad)" stroke="#0369A1" stroke-width="7" stroke-linejoin="round" />
+      
+      <!-- Zigzag Serged Edge Stitching -->
+      <polygon points="135,195 385,185 415,285 105,295"
+               fill="none" stroke="#F43F5E" stroke-width="4" stroke-dasharray="6 4" />
+
+      <!-- Baby Bear Fabric Pattern visible on the cut cloth -->
+      <g transform="translate(260, 240) scale(0.65)">
+        <circle cx="0" cy="0" r="30" fill="#FFFFFF" stroke="#0284C7" stroke-width="3" />
+        <circle cx="-22" cy="-22" r="11" fill="#FFFFFF" stroke="#0284C7" stroke-width="3" />
+        <circle cx="22" cy="-22" r="11" fill="#FFFFFF" stroke="#0284C7" stroke-width="3" />
+        <circle cx="-10" cy="-4" r="3" fill="#0369A1" />
+        <circle cx="10" cy="-4" r="3" fill="#0369A1" />
+        <ellipse cx="0" cy="6" rx="5" ry="3" fill="#0284C7" />
+      </g>
+      <polygon points="175,220 178,226 185,226 180,230 182,236 175,232 168,236 170,230 165,226 172,226" fill="#FACC15" />
+      <polygon points="345,230 348,236 355,236 350,240 352,246 345,242 338,246 340,240 335,236 342,236" fill="#FACC15" />
+    </g>
+
+    <!-- Jute / Eco Twine Ribbon wrapping the stack -->
+    <path d="M 235 155 Q 260 150, 280 155 L 290 415 Q 260 420, 235 415 Z"
+          fill="#CA8A04" stroke="#713F12" stroke-width="5" opacity="0.9" />
+
+    <!-- Cute Bow Tie on Ribbon -->
+    <g transform="translate(260, 165)">
+      <ellipse cx="-20" cy="-5" rx="18" ry="10" fill="#EAB308" stroke="#713F12" stroke-width="4" transform="rotate(-20)" />
+      <ellipse cx="20" cy="-5" rx="18" ry="10" fill="#EAB308" stroke="#713F12" stroke-width="4" transform="rotate(20)" />
+      <circle cx="0" cy="0" r="9" fill="#CA8A04" stroke="#713F12" stroke-width="4" />
+    </g>
+
+    <!-- Eco Craft Tag Attached with string -->
+    <g transform="translate(275, 185) rotate(12)">
+      <!-- Tag string -->
+      <line x1="-15" y1="-15" x2="0" y2="0" stroke="#713F12" stroke-width="3" />
+      <!-- Kraft Tag Body -->
+      <polygon points="0,0 20,-15 150,-15 150,45 20,45 0,0" fill="#FEF08A" stroke="#854D0E" stroke-width="4" />
+      <circle cx="15" cy="0" r="4" fill="#713F12" />
+      <text x="75" y="15" font-family="sans-serif" font-weight="900" font-size="12" fill="#713F12" text-anchor="middle">LAP SERBAGUNA</text>
+      <text x="75" y="32" font-family="sans-serif" font-weight="bold" font-size="10" fill="#15803D" text-anchor="middle">Upcycled Cotton</text>
+    </g>
+  </g>
+</svg>

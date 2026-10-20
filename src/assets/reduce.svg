@@ -1,0 +1,41 @@
+<svg viewBox="0 0 500 500" width="1000" height="1000" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="roughPaperR1" x="-10%" y="-10%" width="120%" height="120%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.03" numOctaves="3" result="noise" />
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="3" xChannelSelector="R" yChannelSelector="G" />
+    </filter>
+    <linearGradient id="gradEmerald" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#4ADE80" />
+      <stop offset="60%" stop-color="#16A34A" />
+      <stop offset="100%" stop-color="#14532D" />
+    </linearGradient>
+    <linearGradient id="gradLeaf" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#86EFAC" />
+      <stop offset="100%" stop-color="#15803D" />
+    </linearGradient>
+  </defs>
+
+  <g filter="url(#roughPaperR1)">
+    <!-- Outer Soft Halo -->
+    <circle cx="250" cy="250" r="230" fill="#FEFAE0" stroke="#283618" stroke-width="8" stroke-dasharray="8 10" opacity="0.9" />
+    <circle cx="250" cy="250" r="205" fill="#DCFCE7" stroke="#16A34A" stroke-width="6" />
+
+    <!-- Downward Trend Eco Arrow (Reducing waste) -->
+    <path d="M 120 180 Q 230 180, 270 280 L 310 240 L 320 370 L 190 360 L 235 315 Q 190 230, 120 220 Z"
+          fill="url(#gradEmerald)" stroke="#14532D" stroke-width="8" stroke-linejoin="round" />
+
+    <!-- Botanical Sprout Leaf -->
+    <path d="M 280 200 C 260 110, 390 100, 390 100 C 390 100, 410 220, 310 220 Z"
+          fill="url(#gradLeaf)" stroke="#166534" stroke-width="7" stroke-linejoin="round" />
+    <path d="M 290 200 Q 340 160, 385 110" stroke="#FEFAE0" stroke-width="5" stroke-linecap="round" fill="none" />
+
+    <!-- Cute sparkles -->
+    <circle cx="150" cy="130" r="8" fill="#F59E0B" />
+    <circle cx="390" cy="290" r="10" fill="#F59E0B" />
+    <polygon points="120,290 128,300 120,310 112,300" fill="#22C55E" />
+
+    <!-- Text badge: REDUCE -->
+    <rect x="140" y="395" width="220" height="60" rx="30" fill="#14532D" stroke="#FEFAE0" stroke-width="5" />
+    <text x="250" y="438" font-family="sans-serif" font-weight="900" font-size="34" fill="#FEFAE0" text-anchor="middle" letter-spacing="4">REDUCE</text>
+  </g>
+</svg>

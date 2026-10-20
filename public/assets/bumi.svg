@@ -1,0 +1,97 @@
+<svg viewBox="0 0 500 500" width="1000" height="1000" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="roughPaperEarth" x="-10%" y="-10%" width="120%" height="120%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="3" result="noise" />
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="3.5" xChannelSelector="R" yChannelSelector="G" />
+    </filter>
+    <radialGradient id="oceanGrad" cx="40%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#38BDF8" />
+      <stop offset="45%" stop-color="#0284C7" />
+      <stop offset="85%" stop-color="#0369A1" />
+      <stop offset="100%" stop-color="#075985" />
+    </radialGradient>
+    <linearGradient id="landGrad1" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#A3E635" />
+      <stop offset="40%" stop-color="#65A30D" />
+      <stop offset="100%" stop-color="#3F6212" />
+    </linearGradient>
+    <linearGradient id="landGrad2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#86EFAC" />
+      <stop offset="60%" stop-color="#22C55E" />
+      <stop offset="100%" stop-color="#15803D" />
+    </linearGradient>
+  </defs>
+
+  <!-- Sparkles around Earth -->
+  <g fill="#F59E0B">
+    <polygon points="65,110 75,130 65,150 55,130" />
+    <polygon points="420,95 428,110 420,125 412,110" />
+    <polygon points="435,360 445,375 435,390 425,375" />
+    <circle cx="85" cy="380" r="9" fill="#10B981" />
+    <circle cx="395" cy="220" r="7" fill="#FBBF24" />
+  </g>
+
+  <!-- Sprout on top of Earth head -->
+  <g transform="translate(250, 48)">
+    <path d="M 0 45 Q 5 25, 0 10" stroke="#15803D" stroke-width="8" stroke-linecap="round" fill="none" />
+    <!-- Left Leaf -->
+    <path d="M 0 20 C -25 15, -35 -5, -15 -10 C -5 -5, 0 10, 0 20 Z" fill="#84CC16" stroke="#3F6212" stroke-width="4" />
+    <!-- Right Leaf -->
+    <path d="M 0 15 C 25 10, 35 -10, 15 -15 C 5 -10, 0 5, 0 15 Z" fill="#A3E635" stroke="#3F6212" stroke-width="4" />
+    <circle cx="0" cy="5" r="5" fill="#FEF08A" />
+  </g>
+
+  <g filter="url(#roughPaperEarth)">
+    <!-- Atmosphere Glow -->
+    <circle cx="250" cy="270" r="186" fill="#BAE6FD" opacity="0.3" />
+
+    <!-- Earth Globe -->
+    <circle cx="250" cy="270" r="175" fill="url(#oceanGrad)" stroke="#0C4A6E" stroke-width="9" />
+
+    <!-- Continents / Island Landmasses (Detailed Watercolor Shapes) -->
+    <!-- Continent 1 (Top Left / Eurasia-style) -->
+    <path d="M 125 210 Q 150 160, 210 165 Q 265 170, 275 220 Q 255 245, 210 235 Q 175 260, 135 245 Z"
+          fill="url(#landGrad1)" stroke="#365314" stroke-width="6" stroke-linejoin="round" />
+    
+    <!-- Continent 2 (Top Right / North America style) -->
+    <path d="M 310 160 Q 370 170, 395 225 Q 365 265, 335 240 Q 295 250, 290 205 Z"
+          fill="url(#landGrad2)" stroke="#14532D" stroke-width="6" stroke-linejoin="round" />
+
+    <!-- Continent 3 (Bottom Center / Africa-Australia style) -->
+    <path d="M 180 295 Q 220 275, 275 300 Q 320 335, 305 385 Q 240 425, 205 390 Q 165 350, 180 295 Z"
+          fill="url(#landGrad1)" stroke="#365314" stroke-width="6" stroke-linejoin="round" />
+
+    <!-- Cute Island specs -->
+    <ellipse cx="140" cy="305" rx="14" ry="10" fill="#84CC16" stroke="#365314" stroke-width="3" />
+    <ellipse cx="370" cy="310" rx="16" ry="12" fill="#84CC16" stroke="#365314" stroke-width="3" />
+
+    <!-- Fluffy Clouds Floating on Earth -->
+    <!-- Cloud 1 -->
+    <g fill="#FFFFFF" opacity="0.9" filter="drop-shadow(0 4px 6px rgba(0,0,0,0.15))">
+      <path d="M 120 180 Q 135 160, 160 165 Q 185 155, 200 175 Q 215 185, 205 200 L 130 200 Z" />
+    </g>
+    <!-- Cloud 2 -->
+    <g fill="#FFFFFF" opacity="0.9" filter="drop-shadow(0 4px 6px rgba(0,0,0,0.15))">
+      <path d="M 320 310 Q 345 295, 370 305 Q 395 300, 400 320 Q 395 335, 375 335 L 325 335 Z" />
+    </g>
+
+    <!-- Adorable Friendly Face on the Planet Earth! -->
+    <!-- Left Eye with Twinkle -->
+    <ellipse cx="205" cy="245" rx="11" ry="14" fill="#0F172A" />
+    <circle cx="202" cy="240" r="4.5" fill="#FFFFFF" />
+    <circle cx="208" cy="250" r="2" fill="#FFFFFF" />
+
+    <!-- Right Eye with Twinkle -->
+    <ellipse cx="295" cy="245" rx="11" ry="14" fill="#0F172A" />
+    <circle cx="292" cy="240" r="4.5" fill="#FFFFFF" />
+    <circle cx="298" cy="250" r="2" fill="#FFFFFF" />
+
+    <!-- Rosy Cheeks -->
+    <ellipse cx="180" cy="265" rx="14" ry="9" fill="#FB7185" opacity="0.75" />
+    <ellipse cx="320" cy="265" rx="14" ry="9" fill="#FB7185" opacity="0.75" />
+
+    <!-- Happy Smile -->
+    <path d="M 230 265 Q 250 288, 270 265" stroke="#0F172A" stroke-width="6.5" stroke-linecap="round" fill="none" />
+    <path d="M 237 270 Q 250 286, 263 270" fill="#EF4444" />
+  </g>
+</svg>

@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="id" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" id="viewport-meta" content="width=device-width, initial-scale=1.0" />
+    <title>3R: Reduce, Reuse, Recycle - Microsite Interaktif Craft4Earth</title>
+    <meta name="description" content="Microsite edukasi interaktif 3R (Reduce, Reuse, Recycle) karya kelompok Craft4Earth DKV Universitas Negeri Makassar. Belajar 3R sekali scroll dengan flip card, komparasi visual, roda siklus daur ulang, dan aksi kampus." />
+    <meta property="og:title" content="3R: Reduce, Reuse, Recycle - Microsite Interaktif Craft4Earth" />
+    <meta property="og:description" content="Microsite edukasi interaktif 3R (Reduce, Reuse, Recycle) karya kelompok Craft4Earth DKV Universitas Negeri Makassar. Belajar 3R sekali scroll dengan flip card, komparasi visual, roda siklus daur ulang, dan aksi kampus." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Titan+One&display=swap" rel="stylesheet">
+    
+    <!-- Filter out external third-party browser extension errors (e.g., crypto wallets like Sender Wallet) -->
+    <script>
+      (function() {
+        var ignoredKeywords = [
+          'sender-wallet',
+          'sender_getProviderState',
+          'sender-wallet-providerResult',
+          'sender',
+          'Failed to get initial state',
+          'No account exist',
+          'ethereum',
+          'solana',
+          'chrome-extension://',
+          'moz-extension://'
+        ];
+
+        function isIgnored(val) {
+          if (!val) return false;
+          var str = '';
+          try {
+            if (typeof val === 'string') {
+              str = val;
+            } else if (val instanceof Error) {
+              str = val.message + ' ' + (val.stack || '');
+            } else if (typeof val === 'object') {
+              str = JSON.stringify(val);
+            } else {
+              str = String(val);
+            }
+          } catch(e) {
+            str = String(val);
+          }
+          str = str.toLowerCase();
+          for (var i = 0; i < ignoredKeywords.length; i++) {
+            if (str.indexOf(ignoredKeywords[i].toLowerCase()) !== -1) return true;
+          }
+          return false;
+        }
+
+        // Intercept console.error to prevent external wallet extensions from reporting errors
+        var originalConsoleError = console.error;
+        console.error = function() {
+          for (var i = 0; i < arguments.length; i++) {
+            if (isIgnored(arguments[i])) {
+              return; // Silently suppress extension error
+            }
+          }
+          return originalConsoleError.apply(console, arguments);
+        };
+
+        // Intercept console.warn as well
+        var originalConsoleWarn = console.warn;
+        console.warn = function() {
+          for (var i = 0; i < arguments.length; i++) {
+            if (isIgnored(arguments[i])) {
+              return;
+            }
+          }
+          return originalConsoleWarn.apply(console, arguments);
+        };
+
+        window.addEventListener('error', function(e) {
+          if (isIgnored(e.message) || isIgnored(e.filename) || isIgnored(e.error)) {
+            e.preventDefault();
+            e.stopImmediatePropagation();
+            return true;
+          }
+        }, true);
+
+        window.addEventListener('unhandledrejection', function(e) {
+          if (isIgnored(e.reason)) {
+            e.preventDefault();
+            e.stopImmediatePropagation();
+            return true;
+          }
+        }, true);
+
+        // Suppress message events from sender-wallet extension
+        window.addEventListener('message', function(e) {
+          if (e && e.data && isIgnored(e.data)) {
+            e.stopImmediatePropagation();
+          }
+        }, true);
+      })();
+    </script>
+
+  </head>
+  <body class="bg-[#FEFAE0] text-[#283618] antialiased selection:bg-[#5B4436] selection:text-[#FEFAE0]">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+    <script>
+      // GitHub Pages fallback: jika file mentah diunggah langsung ke GitHub Pages
+      window.addEventListener('DOMContentLoaded', function() {
+        setTimeout(function() {
+          var rootEl = document.getElementById('root');
+          if (!rootEl || rootEl.children.length === 0) {
+            var link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.href = './assets/index.css';
+            document.head.appendChild(link);
+
+            var script = document.createElement('script');
+            script.type = 'module';
+            script.src = './assets/index.js';
+            document.body.appendChild(script);
+          }
+        }, 250);
+      });
+    </script>
+  </body>
+</html>
