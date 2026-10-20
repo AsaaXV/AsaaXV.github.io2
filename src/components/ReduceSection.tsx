@@ -84,14 +84,11 @@ export const ReduceSection: React.FC = () => {
                         {card.iconType === 'food' && <SedotanBesiIllustration className="w-full h-full drop-shadow-xs" />}
                       </div>
 
-                      {/* Title & Tagline Subtitle */}
+                      {/* Title */}
                       <div className="px-1 mt-0.5">
                         <h3 className="font-display text-base font-black text-white leading-tight">
                           {card.title}
                         </h3>
-                        <span className="text-[11px] font-bold text-amber-200 block mt-0.5">
-                          {card.tagline}
-                        </span>
                       </div>
 
                       {/* Front Description */}

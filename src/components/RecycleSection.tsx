@@ -48,8 +48,8 @@ export const RecycleSection: React.FC = () => {
     if (!wheelRef.current) return;
     const rect = wheelRef.current.getBoundingClientRect();
     const centerX = rect.left + rect.width / 2;
-    // For the half wheel container, the center of the full circle is at the bottom baseline
-    const centerY = rect.top + rect.height;
+    // The center of the circular wheel is at the vertical midpoint
+    const centerY = rect.top + rect.height / 2;
     const angle = Math.atan2(e.clientY - centerY, e.clientX - centerX) * (180 / Math.PI);
 
     startAngleRef.current = angle;
@@ -65,7 +65,7 @@ export const RecycleSection: React.FC = () => {
     if (!isDragging || !wheelRef.current) return;
     const rect = wheelRef.current.getBoundingClientRect();
     const centerX = rect.left + rect.width / 2;
-    const centerY = rect.top + rect.height;
+    const centerY = rect.top + rect.height / 2;
     const currentAngle = Math.atan2(e.clientY - centerY, e.clientX - centerX) * (180 / Math.PI);
 
     const deltaAngle = currentAngle - startAngleRef.current;
@@ -124,7 +124,7 @@ export const RecycleSection: React.FC = () => {
           UBAH JADI BARU
         </div>
         <p className="font-body text-[#283618]/90 text-xs sm:text-sm font-semibold mt-0.5 max-w-md mx-auto">
-          alur pemrosesan sampah daur ulang menjadi produk baru bernilai guna.
+          Alur pemrosesan sampah daur ulang menjadi produk baru bernilai guna.
         </p>
       </div>
 
@@ -175,10 +175,10 @@ export const RecycleSection: React.FC = () => {
           </div>
 
           {/* 2. RODA SETENGAH LINGKARAN (4 Kuadran: 0, 90, 180, 270) Sesuai Gambar Referensi */}
-          <div className="relative mt-6 flex flex-col items-center w-full">
+          <div className="relative mt-5 sm:mt-6 flex flex-col items-center w-full">
             
             {/* Semicircular Viewport */}
-            <div className="relative w-[330px] h-[170px] min-[390px]:w-[370px] min-[390px]:h-[190px] sm:w-[460px] sm:h-[235px] overflow-hidden flex justify-center items-start">
+            <div className="relative w-[300px] h-[160px] min-[360px]:w-[340px] min-[360px]:h-[180px] sm:w-[440px] sm:h-[230px] overflow-hidden flex justify-center items-start">
               {/* Full circular wheel positioned so its top half fills the viewport */}
               <div
                 ref={wheelRef}
@@ -187,7 +187,7 @@ export const RecycleSection: React.FC = () => {
                 onPointerUp={handlePointerUp}
                 onPointerCancel={handlePointerUp}
                 title="Seret roda atau klik angka untuk memilih tahap"
-                className={`relative w-[330px] h-[330px] min-[390px]:w-[370px] min-[390px]:h-[370px] sm:w-[460px] sm:h-[460px] rounded-full flex items-center justify-center touch-none select-none ${
+                className={`relative w-[300px] h-[300px] min-[360px]:w-[340px] min-[360px]:h-[340px] sm:w-[440px] sm:h-[440px] rounded-full flex items-center justify-center touch-none select-none ${
                   isDragging ? 'cursor-grabbing' : 'cursor-grab'
                 }`}
                 style={{ touchAction: 'none' }}
@@ -204,28 +204,28 @@ export const RecycleSection: React.FC = () => {
                   {/* Planet Bumi Circular Body (Menggantikan Roda Kemudi) */}
                   <div className="w-full h-full rounded-full relative flex items-center justify-center">
                     {/* Lingkaran Inti Planet Bumi */}
-                    <div className="w-[86%] h-[86%] rounded-full relative flex items-center justify-center overflow-hidden shadow-2xl bg-sky-200/15">
+                    <div className="w-[94%] h-[94%] rounded-full relative flex items-center justify-center overflow-hidden bg-sky-200/15">
                       <img
                         src={bumiImg}
                         alt="Planet Bumi"
                         className="w-full h-full object-contain select-none pointer-events-none"
                         draggable={false}
                       />
-                      {/* Ring Atmosfer Halus */}
-                      <div className="absolute inset-0 rounded-full border-2 sm:border-3 border-emerald-400/30 ring-4 ring-sky-400/20 pointer-events-none" />
+                      {/* Border Halus tanpa efek bayangan ring */}
+                      <div className="absolute inset-0 rounded-full border border-emerald-400/25 pointer-events-none" />
                     </div>
 
-                    {/* Orbit Ring Dashed */}
-                    <div className="absolute inset-2 sm:inset-3 rounded-full border-2 border-dashed border-[#606C38]/40 pointer-events-none" />
+                    {/* Orbit Ring Dashed (melintasi tepat di tengah tombol nomor kuadran) */}
+                    <div className="absolute inset-[14.5%] rounded-full border-2 border-dashed border-[#606C38]/50 pointer-events-none" />
 
-                    {/* 4 Step Indicator Studs / Numbers on the planet */}
+                    {/* 4 Step Indicator Studs / Numbers on the planet (Responsif persentase: tidak akan pernah terpotong di HP) */}
                     {[0, 90, 180, 270].map((angle, i) => {
                       const stepNum = i + 1;
                       const isStepActive = currentPhase.step === stepNum;
                       const rad = (angle - 90) * (Math.PI / 180);
-                      const distance = 146; // distance from center in px
-                      const x = Math.cos(rad) * distance;
-                      const y = Math.sin(rad) * distance;
+                      // Radius orbit 35.5% dari pusat menjaga tombol selalu berada aman di dalam viewport HP
+                      const leftPercent = 50 + 35.5 * Math.cos(rad);
+                      const topPercent = 50 + 35.5 * Math.sin(rad);
 
                       return (
                         <button
@@ -235,13 +235,15 @@ export const RecycleSection: React.FC = () => {
                             e.stopPropagation();
                             handleSelectPhase(i);
                           }}
-                          className={`absolute w-10 h-10 sm:w-11 sm:h-11 rounded-full font-display font-black text-xs sm:text-sm flex items-center justify-center transition-all cursor-pointer ${
+                          className={`absolute w-9 h-9 sm:w-11 sm:h-11 rounded-full font-display font-black text-xs sm:text-sm flex items-center justify-center transition-all cursor-pointer ${
                             isStepActive
-                              ? 'bg-[#283618] text-white ring-4 ring-amber-400 scale-125 z-20 shadow-xl'
-                              : 'bg-[#C4B8A5] text-[#283618] hover:scale-110 z-10 border-2 border-white/60 shadow-md'
+                              ? 'bg-[#283618] text-white ring-3 sm:ring-4 ring-amber-400 scale-110 sm:scale-115 z-20 shadow-xl'
+                              : 'bg-[#C4B8A5] text-[#283618] hover:scale-105 z-10 border-2 border-white/60 shadow-md'
                           }`}
                           style={{
-                            transform: `translate(${x}px, ${y}px) rotate(${-wheelRotation}deg)`,
+                            left: `${leftPercent}%`,
+                            top: `${topPercent}%`,
+                            transform: `translate(-50%, -50%) rotate(${-wheelRotation}deg)`,
                           }}
                           title={`Pilih Tahap 0${stepNum}: ${RECYCLE_PHASES[i]?.title}`}
                         >
@@ -260,37 +262,38 @@ export const RecycleSection: React.FC = () => {
                   e.stopPropagation();
                   handleNextPhase();
                 }}
-                className="absolute bottom-0 z-30 w-20 h-10 sm:w-24 sm:h-12 rounded-t-full bg-[#283618] hover:bg-[#1e2a12] active:scale-95 text-[#FEFAE0] flex flex-col items-center justify-start pt-1 sm:pt-1.5 border-t-3 border-x-3 border-[#1e2a12] cursor-pointer transition-all group"
+                className="absolute bottom-0 z-30 w-18 h-9 sm:w-24 sm:h-12 rounded-t-full bg-[#283618] hover:bg-[#1e2a12] active:scale-95 text-[#FEFAE0] flex flex-col items-center justify-start pt-1 sm:pt-1.5 border-t-3 border-x-3 border-[#1e2a12] cursor-pointer transition-all group"
                 title="Klik untuk memutar setir ke tahap berikutnya"
               >
                 <RefreshCw className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#FEFAE0] group-hover:rotate-180 transition-transform duration-500" />
-                <span className="font-display text-[8px] sm:text-[9.5px] font-black uppercase tracking-widest text-[#FEFAE0] leading-none mt-0.5">
+                <span className="font-display text-[7.5px] sm:text-[9.5px] font-black uppercase tracking-widest text-[#FEFAE0] leading-none mt-0.5">
                   Putar
                 </span>
               </button>
             </div>
 
             {/* 3. PALANG DASAR HORIZONTAL COKELAT DENGAN AKSEN INSET (Sesuai Gambar Referensi) */}
-            <div className="w-full max-w-[410px] sm:max-w-[480px] h-4.5 bg-[#433126] rounded-full border-t-2 border-[#5B4436] -mt-2 z-20 flex items-center justify-center relative shadow-sm">
+            <div className="w-full max-w-[340px] min-[360px]:max-w-[370px] sm:max-w-[480px] h-4.5 bg-[#433126] rounded-full border-t-2 border-[#5B4436] -mt-2 z-20 flex items-center justify-center relative shadow-sm">
               <div className="w-32 h-1.5 rounded-full bg-[#2e1f17]" />
             </div>
 
-            {/* 4. PENANDA TOMBOL ANGKA 1-4 DI BAWAH PALANG (Warna Persis Gambar Referensi) */}
-            <div className="mt-4 flex flex-col items-center select-none">
-              <div className="flex items-center gap-3 sm:gap-3.5">
+            {/* 4. PENANDA TOMBOL ANGKA 1-4 DI BAWAH PALANG (Dibuat lebih kecil & tidak bisa ditekan) */}
+            <div className="mt-3.5 flex flex-col items-center select-none pointer-events-none">
+              <div className="flex items-center gap-2 sm:gap-2.5">
                 {RECYCLE_PHASES.map((phase, idx) => {
                   const isActive = activeStepIndex === idx;
                   return (
                     <button
                       key={`step-mark-${phase.step}`}
                       type="button"
-                      onClick={() => handleSelectPhase(idx)}
-                      className={`rounded-full flex items-center justify-center font-display font-black text-xs sm:text-sm transition-all duration-300 cursor-pointer ${
+                      disabled
+                      tabIndex={-1}
+                      aria-disabled="true"
+                      className={`rounded-full flex items-center justify-center font-display font-bold transition-all duration-300 pointer-events-none cursor-default select-none ${
                         isActive
-                          ? 'w-8 h-8 sm:w-9 sm:h-9 bg-[#283618] text-white ring-4 ring-amber-400 scale-110 shadow-md'
-                          : 'w-7 h-7 sm:w-8 sm:h-8 bg-[#C4B8A5] text-[#283618] hover:bg-[#b8a995] hover:scale-105'
+                          ? 'w-5 h-5 sm:w-5.5 sm:h-5.5 text-[10px] sm:text-[11px] bg-[#283618] text-white ring-2 ring-amber-400'
+                          : 'w-4.5 h-4.5 sm:w-5 sm:h-5 text-[9px] sm:text-[10px] bg-[#D4C7B5] text-[#4a3b2c] opacity-70'
                       }`}
-                      title={`Pilih Tahap 0${phase.step}: ${phase.title}`}
                     >
                       {phase.step}
                     </button>

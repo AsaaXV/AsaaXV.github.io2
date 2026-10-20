@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Sparkles, Check } from 'lucide-react';
 import { REUSE_ITEMS } from '../data/content';
 import { sounds } from '../utils/audio';
 import { GrassDivider } from './GrassDivider';
@@ -115,7 +114,6 @@ export const ReuseSection: React.FC = () => {
                                 />
                               </div>
                               <span className="text-xs font-bold text-[#FEFAE0] leading-none">Botol Plastik Bekas</span>
-                              <span className="text-[10px] text-white/70 mt-0.5">Bahan Asal: botol bekas.png</span>
                             </div>
                           ) : (
                             <div className="flex flex-col items-center justify-center text-center animate-fade-in w-full h-full">
@@ -128,7 +126,6 @@ export const ReuseSection: React.FC = () => {
                                 />
                               </div>
                               <span className="text-xs font-bold text-white leading-none">Pot Bunga Meja Cantik</span>
-                              <span className="text-[10px] text-white/80 mt-0.5">Hasil Kreasi: Pot-Bunga-dari-Botol.png</span>
                             </div>
                           )
                         )}
@@ -145,7 +142,6 @@ export const ReuseSection: React.FC = () => {
                                 />
                               </div>
                               <span className="text-xs font-bold text-[#FEFAE0] leading-none">Kardus Paket Belanja</span>
-                              <span className="text-[10px] text-white/70 mt-0.5">Bahan Asal: kardus-bekas.png</span>
                             </div>
                           ) : (
                             <div className="flex flex-col items-center justify-center text-center animate-fade-in w-full h-full">
@@ -158,7 +154,6 @@ export const ReuseSection: React.FC = () => {
                                 />
                               </div>
                               <span className="text-xs font-bold text-white leading-none">Rak Buku Mini Meja</span>
-                              <span className="text-[10px] text-white/80 mt-0.5">Hasil Kreasi: Rak-Buku-Mini-Dari-Kardus.png</span>
                             </div>
                           )
                         )}
@@ -175,7 +170,6 @@ export const ReuseSection: React.FC = () => {
                                 />
                               </div>
                               <span className="text-xs font-bold text-[#FEFAE0] leading-none">Baju Bayi Bekas</span>
-                              <span className="text-[10px] text-white/70 mt-0.5">Bahan Asal: baju_bayi_bekas.png</span>
                             </div>
                           ) : (
                             <div className="flex flex-col items-center justify-center text-center animate-fade-in w-full h-full">
@@ -188,20 +182,12 @@ export const ReuseSection: React.FC = () => {
                                 />
                               </div>
                               <span className="text-xs font-bold text-white leading-none">Lap Serbaguna Katun Halus</span>
-                              <span className="text-[10px] text-white/80 mt-0.5">Hasil Kreasi: Kain_Dari_Baju_Bekas_Bayi.png</span>
                             </div>
                           )
                         )}
                       </div>
 
-                      {/* Transformasi Caption */}
-                      {item.captionUnderPhoto && (
-                        <div className="py-1 px-2.5 rounded-xl bg-black/35 border border-white/10 text-center my-1.5">
-                          <span className="font-display text-[11px] font-bold text-amber-200 tracking-wide block leading-tight">
-                            {item.captionUnderPhoto}
-                          </span>
-                        </div>
-                      )}
+
 
                       {/* Deskripsi & Manfaat Kreasi */}
                       <div className="text-xs leading-relaxed mt-1.5">
@@ -210,8 +196,7 @@ export const ReuseSection: React.FC = () => {
                             <p className="text-white/90 font-normal text-xs leading-snug">
                               {item.after.description}
                             </p>
-                            <div className="p-2 rounded-xl bg-white/10 text-xs text-[#FEFAE0] flex items-start gap-1.5 leading-snug">
-                              <Check className="w-3.5 h-3.5 text-emerald-300 shrink-0 mt-0.5" />
+                            <div className="p-2 rounded-xl bg-white/10 text-xs text-[#FEFAE0] leading-snug">
                               <span><strong>Manfaat:</strong> {item.after.benefit}</span>
                             </div>
                           </div>
