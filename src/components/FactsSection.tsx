@@ -132,7 +132,7 @@ export const FactsSection: React.FC = () => {
           FAKTA YANG HARUS KAMU KETAHUI
         </h2>
         <p className="font-body text-[#283618]/90 text-xs sm:text-sm font-semibold mt-0.5 max-w-md mx-auto">
-          data riil timbulan dan komposisi sampah yang perlu kita cermati bersama.
+          Data riil timbulan dan komposisi sampah yang perlu kita cermati bersama.
         </p>
       </div>
 

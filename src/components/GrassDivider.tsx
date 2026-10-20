@@ -3,15 +3,23 @@ import React from 'react';
 interface GrassDividerProps {
   variant?: 'bottom' | 'tall' | 'spiky' | 'foliage';
   className?: string;
+  fillHeight?: boolean;
 }
 
-export const GrassDivider: React.FC<GrassDividerProps> = ({ variant = 'bottom', className = '' }) => {
+export const GrassDivider: React.FC<GrassDividerProps> = ({
+  variant = 'bottom',
+  className = '',
+  fillHeight = false,
+}) => {
+  const isHeightSpecified = fillHeight || /h-\[?\d+|h-full/.test(className);
+  const svgHeightClass = isHeightSpecified ? 'h-full' : 'h-auto';
+
   if (variant === 'spiky') {
     return (
       <div className={`w-full overflow-hidden leading-none select-none pointer-events-none ${className}`}>
         <svg
           viewBox="0 0 1200 90"
-          className="w-full h-auto text-[#283618] block"
+          className={`w-full ${svgHeightClass} text-[#283618] block`}
           fill="currentColor"
           preserveAspectRatio="none"
         >
@@ -35,7 +43,7 @@ export const GrassDivider: React.FC<GrassDividerProps> = ({ variant = 'bottom', 
     <div className={`w-full overflow-hidden leading-none select-none pointer-events-none ${className}`}>
       <svg
         viewBox="0 0 1200 130"
-        className="w-full h-auto text-[#283618] block"
+        className={`w-full ${svgHeightClass} text-[#283618] block`}
         fill="currentColor"
         preserveAspectRatio="none"
       >
@@ -56,6 +64,8 @@ export const GrassDivider: React.FC<GrassDividerProps> = ({ variant = 'bottom', 
           d="M0,130 L0,90 L40,60 L75,95 L120,52 L160,100 L205,58 L255,105 L300,52 L355,100 L405,58 L460,105 L515,48 L570,102 L625,58 L680,105 L735,52 L790,100 L845,58 L900,105 L955,52 L1010,100 L1065,60 L1120,102 L1170,68 L1200,95 L1200,130 Z"
           fill="#1c2711"
         />
+        {/* Layer 4: Solid ground base line covering all the way to y=130 */}
+        <rect x="0" y="122" width="1200" height="8" fill="#1c2711" />
       </svg>
     </div>
   );

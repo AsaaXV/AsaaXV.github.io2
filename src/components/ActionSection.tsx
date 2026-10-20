@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { FolderOpen, Share2, CheckCircle2, ChevronRight, Sparkles, Heart, X, MousePointerClick, ChevronLeft } from 'lucide-react';
+import { FolderOpen, Share2, CheckCircle2, ChevronRight, X, ChevronLeft } from 'lucide-react';
 import { ACTION_FOLDERS } from '../data/content';
-import { GrassDivider } from './GrassDivider';
 import { ShareModal } from './ShareModal';
 import { sounds } from '../utils/audio';
 
@@ -10,17 +9,12 @@ import tongsampahBawahImg from '../assets/tongsampah-bawah.png';
 import folder1Img from '../assets/folder1.png';
 import folder2Img from '../assets/folder2.png';
 import folder3Img from '../assets/folder3.png';
-import sampah1Img from '../assets/sampah1.png';
-import sampah2Img from '../assets/sampah2.png';
-
 // Fallback SVG assets to ensure 100% reliability
 import tongsampahAtasSvg from '../assets/tongsampah-atas.svg';
 import tongsampahBawahSvg from '../assets/tongsampah-bawah.svg';
 import folder1Svg from '../assets/folder1.svg';
 import folder2Svg from '../assets/folder2.svg';
 import folder3Svg from '../assets/folder3.svg';
-import sampah1Svg from '../assets/sampah1.svg';
-import sampah2Svg from '../assets/sampah2.svg';
 
 interface ActionSectionProps {
   onOpenSecret?: () => void;
@@ -84,7 +78,7 @@ export const ActionSection: React.FC<ActionSectionProps> = ({ onOpenSecret }) =>
             MULAI DARI SEKARANG
           </div>
           <p className="font-body text-[#283618]/90 text-xs sm:text-sm font-semibold mt-2 max-w-md mx-auto">
-            kamu nggak perlu jadi aktivis buat mulai peduli. cukup 3 langkah kecil ini.
+            Kamu nggak perlu jadi aktivis buat mulai peduli. Cukup 3 langkah kecil ini.
           </p>
         </div>
 
@@ -204,30 +198,7 @@ export const ActionSection: React.FC<ActionSectionProps> = ({ onOpenSecret }) =>
           </div>
         )}
 
-        {/* Status prompt badge above trash bin */}
-        <div className="mb-2">
-          <button
-            type="button"
-            onClick={toggleLid}
-            className={`inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold shadow-sm transition-all cursor-pointer border ${
-              isLidOpen
-                ? 'bg-[#283618] text-[#FEFAE0] border-[#1e2a12] hover:bg-[#1e2a12]'
-                : 'bg-[#FEFAE0] text-[#283618] border-[#283618]/30 hover:bg-[#f3eed0]'
-            }`}
-          >
-            {isLidOpen ? (
-              <>
-                <FolderOpen className="w-3.5 h-3.5 text-[#FEFAE0]" />
-                <span>Tong Terbuka • Tekan salah satu folder di bawah</span>
-              </>
-            ) : (
-              <>
-                <Sparkles className="w-3.5 h-3.5 text-amber-700 animate-pulse" />
-                <span>Tekan tong sampah untuk membuka 3 dokumen aksi</span>
-              </>
-            )}
-          </button>
-        </div>
+
 
         {/* The Iconic Illustrated Trash Bin using authentic assets */}
         <div className="relative mt-16 sm:mt-22 md:mt-28 my-4 pt-4 sm:pt-6 flex flex-col items-center select-none">
@@ -262,7 +233,7 @@ export const ActionSection: React.FC<ActionSectionProps> = ({ onOpenSecret }) =>
           {/* Main Trash Bin Body & Cavity with Embedded Action Folders */}
           <div
             onClick={toggleLid}
-            className="relative z-20 flex flex-col items-center cursor-pointer min-h-[240px] sm:min-h-[300px]"
+            className="relative z-20 flex flex-col items-center cursor-pointer"
             title={isLidOpen ? 'Klik untuk menutup tong sampah' : 'Klik untuk membuka tong sampah'}
           >
             {/* Dark Interior Cavity at Mouth of the Bin */}
@@ -331,67 +302,42 @@ export const ActionSection: React.FC<ActionSectionProps> = ({ onOpenSecret }) =>
               })}
             </div>
 
-            {/* Main Trash Bin Body using authentic tongsampah-bawah.png with SVG fallback */}
-            <img
-              src={tongsampahBawahImg}
-              alt="Aset Asli Badan Tong Sampah"
-              className="relative z-20 w-56 sm:w-72 min-h-[220px] sm:min-h-[280px] object-contain drop-shadow-2xl select-none pointer-events-none"
-              draggable={false}
-              onError={(e) => {
-                e.currentTarget.src = tongsampahBawahSvg;
-              }}
-            />
-
-            {/* The Iconic "SHARE" Button matching 3R DMI.jpg */}
-            <div className="absolute top-[48%] left-1/2 -translate-x-1/2 -translate-y-1/2 z-30">
-              <button
-                type="button"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  handleOpenShare();
+            {/* Badan Tong Sampah Asli (Full & Utuh, tanpa rumput dan tanpa sampah) */}
+            <div className="relative flex flex-col items-center">
+              <img
+                src={tongsampahBawahImg}
+                alt="Aset Asli Badan Tong Sampah"
+                className="relative z-20 w-56 sm:w-72 h-auto object-contain select-none pointer-events-none drop-shadow-2xl"
+                draggable={false}
+                onError={(e) => {
+                  e.currentTarget.src = tongsampahBawahSvg;
                 }}
-                className="group px-7 py-2.5 sm:px-8 sm:py-3 rounded-full bg-[#283618] hover:bg-[#1e2a12] text-white font-display text-2xl sm:text-3xl font-black tracking-wider uppercase shadow-2xl active:scale-95 transition-all transform hover:scale-105 cursor-pointer border-2 border-[#FEFAE0] flex items-center gap-2"
-              >
-                <span>SHARE</span>
-                <Share2 className="w-5 h-5 text-white group-hover:rotate-12 transition-transform" />
-              </button>
+              />
+
+              {/* The Iconic "SHARE" Button */}
+              <div className="absolute top-[48%] left-1/2 -translate-x-1/2 -translate-y-1/2 z-30">
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleOpenShare();
+                  }}
+                  className="group px-7 py-2.5 sm:px-8 sm:py-3 rounded-full bg-[#283618] hover:bg-[#1e2a12] text-white font-display text-2xl sm:text-3xl font-black tracking-wider uppercase shadow-2xl active:scale-95 transition-all transform hover:scale-105 cursor-pointer border-2 border-[#FEFAE0] flex items-center gap-2"
+                >
+                  <span>SHARE</span>
+                  <Share2 className="w-5 h-5 text-white group-hover:rotate-12 transition-transform" />
+                </button>
+              </div>
             </div>
-          </div>
-
-          {/* Clustered Trash around base using sampah1.png & sampah2.png (Ground level) */}
-          <div className="relative -mt-6 sm:-mt-8 w-72 sm:w-88 flex justify-between items-center pointer-events-none z-25 px-2">
-            <img
-              src={sampah1Img}
-              alt="Sampah Terpilah 1"
-              className="w-24 sm:w-30 h-auto -ml-4 drop-shadow-md select-none"
-              draggable={false}
-              onError={(e) => {
-                e.currentTarget.src = sampah1Svg;
-              }}
-            />
-            <img
-              src={sampah2Img}
-              alt="Sampah Terpilah 2"
-              className="w-24 sm:w-30 h-auto -mr-4 drop-shadow-md select-none -scale-x-100"
-              draggable={false}
-              onError={(e) => {
-                e.currentTarget.src = sampah2Svg;
-              }}
-            />
-          </div>
-
-          {/* Background Grass Silhouette behind trash bin */}
-          <div className="w-full max-w-lg -mt-12 pointer-events-none z-10 opacity-85">
-            <GrassDivider variant="bottom" className="w-full h-16 sm:h-20" />
           </div>
         </div>
 
         {/* Closing Quote from 3R DMI.jpg & Image 7 */}
         <div className="text-center my-10 max-w-lg mx-auto">
           <p className="font-display text-lg sm:text-xl md:text-2xl font-black text-[#283618] leading-snug tracking-wide">
-            BUMI ini dipinjam dari anak cucu kita.
+            Bumi ini dipinjam dari anak cucu kita.
             <br />
-            yuk jaga bareng-bareng !
+            Yuk jaga bareng-bareng!
           </p>
         </div>
       </div>

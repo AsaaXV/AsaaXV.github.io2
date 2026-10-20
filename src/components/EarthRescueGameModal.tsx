@@ -935,7 +935,7 @@ export const EarthRescueGameModal: React.FC<EarthRescueGameModalProps> = ({ isOp
             <span className="inline-flex items-center gap-1 font-bold text-stone-700 bg-stone-200/80 px-2 py-0.5 rounded text-[11px]">
               <ArrowLeft className="w-3 h-3" /> <ArrowRight className="w-3 h-3" /> / Tombol A-D
             </span>
-            <span className="hidden sm:inline text-stone-500">atau geser mouse untuk menggerakkan tong</span>
+            <span className="hidden sm:inline text-stone-500">Atau geser mouse untuk menggerakkan tong</span>
           </div>
 
           <div className="flex items-center gap-2 text-[11px]">

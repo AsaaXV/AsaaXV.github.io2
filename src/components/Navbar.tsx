@@ -70,9 +70,6 @@ export const Navbar: React.FC<NavbarProps> = ({
           <span className="font-display text-[#283618] text-lg font-black tracking-wider group-hover:text-[#5B4436] transition-colors">
             CRAFT4EARTH
           </span>
-          <span className="text-xs font-semibold px-2 py-0.5 rounded-full bg-[#283618]/15 text-[#283618] group-hover:bg-[#283618]/25 transition-colors">
-            DKV UNM
-          </span>
         </div>
       </header>
 
